@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Timestamp } from 'rxjs';
+import { ITodo } from './interfaces/itodo';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +9,14 @@ import { Timestamp } from 'rxjs';
 })
 export class AppComponent {
   title = 'Todo List';
-  todoList: any [] = [];
+  todoList: ITodo [] = [];
   todoTitle: string;
-  timeNow: Date;
+  todoId: number;
 
   ngOnInit() {
+    this.todoId = 1;
     this.todoTitle = '';
-    this.todoList = [
-      //example of how to make an item in todo list
-      { title: 'Install Angluar CLI', isDone: false, todoTimeEntered: new Date('2019-09-21 17:30:25')},
-      { title: 'Complete the assignment for today', isDone: false, todoTimeEntered: new Date('2019-09-25 18:15:29')}
-    ];
-    this.timeNow = new Date();
+    this.todoList = [];
   }
 
   //method to delete an item
@@ -41,16 +38,16 @@ export class AppComponent {
 
   //method to add an item
   addTodo():void {
-    //gets current time when todo is added
-    this.timeNow = new Date();
-
     this.todoList.push({
+      id: this.todoId,
       title: this.todoTitle,
       isDone: false,
-      todoTimeEntered: this.timeNow
+      isDoing: false,
+      isEditing: false,
     });
 
     //resets our todoTitle variable to an empty string
     this.todoTitle = '';
+    this.todoId++;
   }
 }
