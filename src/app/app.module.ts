@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoService } from './services/todo.service';
+import { ConfirmationModelComponent } from './confirmation-modal/confirmation-model.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConfirmationModelComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Timestamp } from 'rxjs';
 import { ITodo } from './interfaces/itodo';
+import { TodoService } from './services/todo.service';
 
 @Component({
   selector: 'app-root',
@@ -9,45 +10,46 @@ import { ITodo } from './interfaces/itodo';
 })
 export class AppComponent {
   title = 'Todo List';
-  todoList: ITodo [] = [];
   todoTitle: string;
+  todoList: ITodo[] = [];
   todoId: number;
+
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {
     this.todoId = 1;
     this.todoTitle = '';
-    this.todoList = [];
-  }
-
-  //method to delete an item
-  deleteTodo(todo:any) {
-      const index = this.todoList.findIndex(todoItem => todoItem === todo);
-      this.todoList.splice(index, 1);
-  }
-
-  //method to complete an item
-  completeTodo(todo:any) {
-    todo.isDone = true;
-    todo.todoTimeCompleted = new Date();
-  }
-
-  reopenTodo(todo:any) {
-    todo.isDone = false;
-    todo.todoTimeCompleted = '';
-  }
-
-  //method to add an item
-  addTodo():void {
+    this.todoList = this.todoService.getTodoItems();
     this.todoList.push({
       id: this.todoId,
-      title: this.todoTitle,
-      isDone: false,
+      title: "Install Angular CLI",
       isDoing: false,
+      isDone: false,
       isEditing: false,
     });
+  }
 
-    //resets our todoTitle variable to an empty string
-    this.todoTitle = '';
+  addTodo(): void {
     this.todoId++;
+    this.todoService.addTodo({
+      id: this.todoId,
+      isDoing: false,
+      isEditing: false,
+      title: this.todoTitle,
+      isDone: false,
+    });
+    this.todoTitle = "";
+  }
+
+  deleteTodo(todo: ITodo): void {
+    this.todoService.deleteTodo(todo);
+  }
+
+  completeTodo(todo: ITodo): void {
+    this.todoService.completeTodo(todo);
+  }
+
+  reopenTodo(todo: ITodo): void {
+    this.todoService.reopenTodo(todo);
   }
 }
