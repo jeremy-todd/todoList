@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoService } from './services/todo.service';
-import { ConfirmationModelComponent } from './confirmation-modal/confirmation-model.component';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
+import { AddTodoModalComponent } from './add-todo-modal/add-todo-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConfirmationModelComponent
+    ConfirmationModalComponent,
+    AddTodoModalComponent
   ],
   imports: [
     BrowserModule,

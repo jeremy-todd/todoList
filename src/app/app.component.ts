@@ -29,7 +29,7 @@ export class AppComponent {
     });
   }
 
-  addTodo(): void {
+  /*addTodo(): void {
     this.todoId++;
     this.todoService.addTodo({
       id: this.todoId,
@@ -39,6 +39,10 @@ export class AppComponent {
       isDone: false,
     });
     this.todoTitle = "";
+  }*/
+
+  addTodo(todo: ITodo): void {
+    this.todoService.addTodo(todo);
   }
 
   deleteTodo(todo: ITodo): void {
