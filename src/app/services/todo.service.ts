@@ -21,6 +21,10 @@ export class TodoService {
     return this.todoList;
   }
 
+  getTodoItem(id: number): ITodo {
+    return this.todoList.find(x => x.id === id);
+  }
+
   //add a todo item
   addTodo(todo: ITodo): void {
     this.todoList.push(todo);
