@@ -1,0 +1,23 @@
+.done {
+    background-color: lightgreen;
+    color: white;
+}
+
+.hideMe {
+    visibility: hidden;
+}
+
+.btn-row {
+    text-align: right;
+    button {
+        margin: 5px;
+    }
+}
+
+.todoListInput {
+    text-align: center;
+    button {
+        margin: 5px;
+    }
+    vertical-align: middle;
+}

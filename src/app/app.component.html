@@ -1,20 +1,4 @@
-<h1 align = "center">{{ title }}</h1>
-<div class="todoListInput"><add-todo-modal></add-todo-modal></div>
-<ul align = "center" class = "list-group">
-  <li class="list-group-item" [ngClass]="{'done':todo.isDone}" *ngFor="let todo of todoList">
-    <div class="view">
-      <label>{{ todo.id}}. {{ todo.title }}</label>
-      <div class="btn-row">
-        <button type="button" (click)=completeTodo(todo) class="btn btn-success btn-sm" *ngIf="!todo.isDone">Done</button>
-        <button type="button" (click)=reopenTodo(todo) class="btn btn-warning btn-sm" *ngIf="todo.isDone">Open</button>
-        <confirmation-modal></confirmation-modal>
-        
-      </div>
-    </div>
-  </li>
-</ul>
-<br />
-<!-- <div class="todoListInput"><add-todo-modal></add-todo-modal></div> -->
-<!--  <div class="todoListInput"><input type="text" class="todo-input" placeholder="Add next todo here" [(ngModel)]="todoTitle" (keyup.enter)=addTodo()></div> -->
+
+
 
 <router-outlet></router-outlet>

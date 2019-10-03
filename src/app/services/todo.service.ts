@@ -5,7 +5,15 @@ import { ITodo } from '../interfaces/itodo';
   providedIn: 'root'
 })
 export class TodoService {
-  todoList: ITodo[] = [];
+  todoList: ITodo[] = [
+    {
+      id: 1,
+      title: "Install Angular CLI",
+      isDoing: false,
+      isDone: false,
+      isEditing: false,
+    }
+  ];
 
   constructor() { }
 
